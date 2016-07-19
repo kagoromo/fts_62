@@ -5,16 +5,22 @@
 
   <div class="col-md-6">
     <%= f.label :number_of_questions, t("subject.number_of_questions") %>
-    <%= f.number_field :number_of_questions,
-      min: 10, max: 100, class: "form-control" %>
+    <%= f.number_field :number_of_questions, class: "form-control" %>
 
     <%= f.label :duration, t("subject.duration") %>
-    <%= f.number_field :duration, min: 5, max: 1000, class: "form-control" %>
+    <%= f.number_field :duration, class: "form-control" %>
 
     <%= f.label :chatwork_room_id, t("subject.chatwork_room_id") %>
     <%= f.text_field :chatwork_room_id, class: "form-control" %>
   </div>
-  <br/>
+  <div class="col-md-12 form-group">
+    <% if @chatwork_room_name %>
+      <%= t "subject.group_chat_found" %>
+      <%= @chatwork_room_name %>
+    <% else %>
+      <%= t "subject.group_chat_not_found", id: @subject.chatwork_room_id %>
+    <% end %>
+  </div>
   <%= f.submit yield(:submit),
     class: "btn btn-primary col-md-4 col-md-offset-4" %>
 <% end %>

@@ -24,5 +24,6 @@ module MasterProject
     config.active_record.raise_in_transactional_callbacks = true
     config.time_zone = "Hanoi"
     config.active_job.queue_adapter = :delayed_job
+    config.force_ssl = true
   end
 end

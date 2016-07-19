@@ -21,6 +21,10 @@ class Admins::SubjectsController < ApplicationController
     end
   end
 
+  def edit
+    @chatwork_room_name = @subject.get_chatwork_room_name current_admin
+  end
+
   def update
     if @subject.update_attributes subject_params
       flash[:success] = t "subject.edit_success"

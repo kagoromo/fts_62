@@ -19,7 +19,7 @@ class Exam < ActiveRecord::Base
     to_account = ChatWork::Member.get(room_id: room_id).find {|member|
       member["name"] == user.chatwork_name}
     if to_account
-      to_account_id = to_account_id["account_id"]
+      to_account_id = to_account["account_id"]
       body = I18n.t "exam.chatwork_message", id: to_account_id, name: user.chatwork_name,
         score: score, total: subject.number_of_questions, subject: subject.content
     else

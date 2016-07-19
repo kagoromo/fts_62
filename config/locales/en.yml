@@ -77,6 +77,8 @@ en:
     delete_success: "Subject detete successfully"
     not_enought_question: "Subject not enought question for a exam"
     chatwork_room_id: "ChatWork Room ID"
+    group_chat_found: "Found group chat with name: "
+    group_chat_not_found: "Group chat with ID %{id} not found!"
 
   question:
     new: "New question"
