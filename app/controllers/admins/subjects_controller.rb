@@ -40,6 +40,7 @@ class Admins::SubjectsController < ApplicationController
 
   private
   def subject_params
-    params.require(:subject).permit :content, :number_of_questions, :duration
+    params.require(:subject).permit :content, :number_of_questions, :duration,
+      :chatwork_room_id
   end
 end

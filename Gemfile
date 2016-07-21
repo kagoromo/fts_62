@@ -21,6 +21,9 @@ gem "omniauth-github"
 gem "reform"
 gem "reform-rails"
 gem "jquery-countdown-rails"
+gem "chatwork"
+gem "delayed_job_active_record"
+gem "daemons"
 
 group :development, :test do
   gem "byebug"

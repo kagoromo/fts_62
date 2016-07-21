@@ -11,11 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160714062646) do
+ActiveRecord::Schema.define(version: 20160721044326) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "name"
-    t.string   "chatwork_id"
+    t.string   "chatwork_name"
+    t.string   "chatwork_api_key"
     t.string   "remember_digest"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
@@ -43,6 +44,22 @@ ActiveRecord::Schema.define(version: 20160714062646) do
   end
 
   add_index "answers", ["question_id"], name: "index_answers_on_question_id"
+
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
   create_table "exams", force: :cascade do |t|
     t.integer  "status",     default: 0
@@ -87,6 +104,7 @@ ActiveRecord::Schema.define(version: 20160714062646) do
     t.string   "content"
     t.integer  "number_of_questions"
     t.integer  "duration"
+    t.string   "chatwork_room_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
   end
@@ -112,7 +130,7 @@ ActiveRecord::Schema.define(version: 20160714062646) do
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
-    t.string   "chatwork_id"
+    t.string   "chatwork_name"
     t.string   "remember_digest"
     t.string   "provider"
     t.string   "uid"

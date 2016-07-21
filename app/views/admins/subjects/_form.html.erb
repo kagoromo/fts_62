@@ -10,6 +10,9 @@
 
     <%= f.label :duration, t("subject.duration") %>
     <%= f.number_field :duration, min: 5, max: 1000, class: "form-control" %>
+
+    <%= f.label :chatwork_room_id, t("subject.chatwork_room_id") %>
+    <%= f.text_field :chatwork_room_id, class: "form-control" %>
   </div>
   <br/>
   <%= f.submit yield(:submit),
