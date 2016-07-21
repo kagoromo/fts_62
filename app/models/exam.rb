@@ -13,6 +13,23 @@ class Exam < ActiveRecord::Base
 
   accepts_nested_attributes_for :results
 
+  def send_score_to_chatwork admin
+    ChatWork.api_key = admin.chatwork_api_key
+    room_id = subject.chatwork_room_id
+    to_account = ChatWork::Member.get(room_id: room_id).find {|member|
+      member["name"] == user.chatwork_name}
+    if to_account
+      to_account_id = to_account_id["account_id"]
+      body = I18n.t "exam.chatwork_message", id: to_account_id, name: user.chatwork_name,
+        score: score, total: subject.number_of_questions, subject: subject.content
+    else
+      body = I18n.t "exam.chatwork_message_without_to", name: user.chatwork_name,
+        score: score, total: subject.number_of_questions, subject: subject.content
+    end
+    ChatWork::Message.create room_id: room_id, body: body
+  end
+  # handle_asynchronously :send_score_to_chatwork
+
   def calculated_score
     results.correct.count
   end

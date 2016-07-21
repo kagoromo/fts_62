@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :exams, dependent: :destroy
 
   validates :name, presence: true
-  validates :chatwork_id, presence: true
+  validates :chatwork_name, presence: true
 
   class << self
     def from_omniauth auth

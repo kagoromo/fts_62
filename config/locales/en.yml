@@ -76,6 +76,7 @@ en:
     delete_fail: "Subject delete failed"
     delete_success: "Subject detete successfully"
     not_enought_question: "Subject not enought question for a exam"
+    chatwork_room_id: "ChatWork Room ID"
 
   question:
     new: "New question"
@@ -194,6 +195,12 @@ en:
     warning_finish: "Are you sure you want to finish this exam?"
     remaining_time: "Remaining Time:"
     your_score: "Your score is: %{score}"
+    chatwork_message: "[To:%{id}] %{name}\n
+      You scored %{score}/%{total} on your exam of subject
+       %{subject}."
+    chatwork_message_without_to: "%{name}\n
+      You scored %{score}/%{total} on your exam of subject
+       %{subject}."
 
   suggested_question:
     check: "Check"

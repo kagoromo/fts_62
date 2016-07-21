@@ -16,6 +16,7 @@ class Admins::ExamsController < ApplicationController
   def update
     if @exam.update_attributes exam_params
       @exam.update_attributes score: @exam.calculated_score
+      @exam.send_score_to_chatwork current_admin
       flash[:success] = t "exam.check_done"
       redirect_to admins_exams_path
     else

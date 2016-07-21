@@ -3,26 +3,26 @@ Admin.create!(
   email: "admin@railstutorial.org",
   password: "12345678",
   password_confirmation: "12345678",
-  chatwork_id: "11111111111111111111")
+  chatwork_name: "11111111111111111111")
 
 10.times do |n|
   name = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
   password = "12345678"
-  chatwork_id = "11111111111111111111"
+  chatwork_name = "11111111111111111111"
   User.create!(
     name: name,
     email: email,
     password: password,
     password_confirmation: password,
-    chatwork_id: chatwork_id)
+    chatwork_name: chatwork_name)
 end
 
 5.times do
   name = Faker::Name.title
   content = Faker::Lorem.sentence
   subject = Subject.create! content: content, number_of_questions: 20,
-    duration: 30
+    duration: 30, chatwork_room_id: "43643696"
 end
 
 subject = Subject.all
